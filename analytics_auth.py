@@ -48,3 +48,4 @@ def initialize_service():
 
   # 3. Build the Analytics Service Object with the authorized http object
   return build('analytics', 'v3', http=http)
+

@@ -1,11 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # -*- coding: utf-8 -*-
 
 import sys,codecs,csv
-import hello_analytics_api_v3_auth   # import the Auth Helper class
+import analytics_auth   # import the Auth Helper class
+import datetime
 
 from apiclient.errors import HttpError
 from oauth2client.client import AccessTokenRefreshError
+
 
 # Fix for various character encoding errors for output
 if sys.stdout.encoding != 'UTF-8':
@@ -13,7 +15,7 @@ if sys.stdout.encoding != 'UTF-8':
 
 def main(argv):
   # Initialize the Analytics Service Object
-  service = hello_analytics_api_v3_auth.initialize_service()
+  service = analytics_auth.initialize_service()
 
   try:
     # Query APIs, print results
@@ -67,35 +69,35 @@ def get_profile_id(service):
 
 def get_results(service, profile_id):
   # Use the Analytics Service Object to query the Core Reporting API
+  date = datetime.datetime.now()
+  usedate = date.strftime('%Y-%m-%d')
+   
   return service.data().ga().get(
-      ids='ga:' + profile_id,
-      start_date='2014-02-03',
-      end_date='2014-03-03',
+      ids='ga:'+ profile_id,
+      start_date=usedate,
+      end_date=usedate,
       metrics='ga:sessions',
-	  dimensions='ga:country').execute()
+	  dimensions='ga:longitude,ga:latitude',
+	  max_results='10000',
+	  sort='-ga:sessions').execute()
 
 
 def print_results(results):
   # Print data nicely for the user.
   if results:
-	print_report_info(results)
+	"""print_report_info(results)
 	print_pagination_info(results)
 	print_profile_info(results)
 	print_query(results)
 	print_column_headers(results)
-	print_totals_for_all_results(results)
+	print_totals_for_all_results(results)"""
 	print_rows(results)
 
   else:
     print 'No results found'
 
-
+"""
 def print_report_info(results):
-  """Prints general information about this report.
-
-  Args:
-    results: The response returned from the Core Reporting API.
-  """
 
   print 'Report Infos:'
   print 'Contains Sampled Data = %s' % results.get('containsSampledData')
@@ -106,11 +108,6 @@ def print_report_info(results):
 
 
 def print_pagination_info(results):
-  """Prints common pagination details.
-
-  Args:
-    results: The response returned from the Core Reporting API.
-  """
 
   print 'Pagination Infos:'
   print 'Items per page = %s' % results.get('itemsPerPage')
@@ -125,11 +122,6 @@ def print_pagination_info(results):
 
 
 def print_profile_info(results):
-  """Prints information about the profile.
-
-  Args:
-    results: The response returned from the Core Reporting API.
-  """
 
   print 'Profile Infos:'
   info = results.get('profileInfo')
@@ -142,11 +134,6 @@ def print_profile_info(results):
 
 
 def print_query(results):
-  """The query returns the original report query as a dict.
-
-  Args:
-    results: The response returned from the Core Reporting API.
-  """
 
   print 'Query Parameters:'
   query = results.get('query')
@@ -156,15 +143,6 @@ def print_query(results):
 
 
 def print_column_headers(results):
-  """Prints the information for each column.
-
-  The main data from the API is returned as rows of data. The column
-  headers describe the names and types of each column in rows.
-
-
-  Args:
-    results: The response returned from the Core Reporting API.
-  """
 
   print 'Column Headers:'
   headers = results.get('columnHeaders')
@@ -178,11 +156,6 @@ def print_column_headers(results):
 
 
 def print_totals_for_all_results(results):
-  """Prints the total metric value for all pages the query matched.
-
-  Args:
-    results: The response returned from the Core Reporting API.
-  """
 
   print 'Total Metrics For All Results:'
   print 'This query returned %s rows.' % len(results.get('rows'))
@@ -195,22 +168,21 @@ def print_totals_for_all_results(results):
     print 'Metric Name  = %s' % metric_name
     print 'Metric Total = %s' % metric_total
     print
-
+"""
 
 def print_rows(results):
-  """Prints all the rows of data returned by the API.
 
-  Args:
-    results: The response returned from the Core Reporting API.
-  """
   # Opens and writes rows into CSV file
   #writer = csv.writer(codecs.open('test.csv','w', encoding='UTF-8', errors='replace'))
-  print 'Rows:'
+  #print 'Rows:'
   if results.get('rows', []):
+    #i = 0
     for row in results.get('rows'):
-      #row_encode = row.encode('utf-8')
-      print '\t'.join(row)
+      #row_encode = row[1].encode('utf-8')
+      #row_encode2 = row[0].decode('utf-8')
+      print ','.join(row)
       #writer.writerow(row)
+      #i = i + 1
   else:
     print 'No Rows Found'
   
@@ -218,3 +190,4 @@ def print_rows(results):
 
 if __name__ == '__main__':
   main(sys.argv)
+
