@@ -23,7 +23,7 @@
 
 # Moves cday.png into global data directory 
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png /Applications/Processing.app/Contents/Java/data/cday.png
-  rm /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png
+    rm /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png
 
 # Run script that merges current day, previous day, and bg map
 	processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/processing_merge/ --output=./test2 --run --force
@@ -39,27 +39,27 @@
 #######
 
 # Counter for Image Sequence File names
-  COUNTFILE="counter.tmp"
+  COUNTFILE="./counter.tmp"
   MAXNUM=30
 
-
-  if [ -f $COUNTFILE ];
+  if [ ! -f $COUNTFILE ]
   then
-    echo 0 > $COUNTFILE
+   	 echo 0 > $COUNTFILE
   fi
 
   count=$(cat $COUNTFILE)
-  dayname=$count
-
-  if [$(cat $COUNTFILE) > $MAXNUM];
+  if [ $(cat $COUNTFILE) -gt $MAXNUM ]
 	then 
 		echo 0 > $COUNTFILE	
 
 	else 
-    COUNTER=$[$(cat $COUNTFILE) + 1]
-    echo $COUNTER > $COUNTFILE
+		
+    	COUNTER=$count
+    	((COUNTER++))
+    	echo $COUNTER > $COUNTFILE
 	fi
   
+ 
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
 	# Push to SOS
 	scp /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png sos@sos-primary.avl.indiana.edu:/shared/sos/media/site-custom/IU_ware/images
