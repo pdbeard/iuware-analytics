@@ -48,10 +48,10 @@
     echo 0 > $COUNTFILE
   fi
 
- 	count='cat $COUNTFILE'
+  count=$(cat $COUNTFILE)
   dayname=$count
 
-  if [$(cat $COUNTFILE) > $MAXNUM]
+  if [$(cat $COUNTFILE) > $MAXNUM];
 	then 
 		echo 0 > $COUNTFILE	
 
