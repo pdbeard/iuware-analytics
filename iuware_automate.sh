@@ -22,11 +22,7 @@
 	#processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon_pDay/ --output=./test2 --run --force
 
 # Moves cday.png into global data directory 
-<<<<<<< Updated upstream
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png /Applications/Processing.app/Contents/Java/data/cday.png
-=======
-  cp /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png /Applications/Processing.app/Contents/Java/data/shapes/cday.png
->>>>>>> Stashed changes
   rm /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png
 
 # Run script that merges current day, previous day, and bg map
