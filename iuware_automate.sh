@@ -43,7 +43,7 @@
 	MAX_FILE="max.tmp"
 	count='cat $COUNTER_FILE'
 	max='cat $MAX_FILE'
-
+  dayname=$count
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
 
 	# Push to SOS
@@ -51,7 +51,7 @@
  
 	if [$count > $max]
 	then 
-		echo "0" >counter.tmp	
+		echo 0 >counter.tmp	
 	else 
 		((count++))
 	fi
