@@ -21,7 +21,7 @@ void draw()
   tint(255,255);
   image(cday,0,0);
   
-  saveFrame("1.png"); 
+  saveFrame("merge.png"); 
   exit();
   
 }
