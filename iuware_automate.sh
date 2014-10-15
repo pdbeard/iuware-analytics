@@ -39,19 +39,28 @@
 #######
 
 # Counter for Image Sequence File names
-	COUNTER_FILE="counter.tmp"
-	MAX_FILE="max.tmp"
-	count='cat $COUNTER_FILE'
-	max='cat $MAX_FILE'
-  dayname=$count
-	cp /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
+  COUNTFILE="counter.tmp"
+  MAXNUM=30
 
+
+  if [ -f $COUNTFILE ];
+  then
+    echo 0 > $COUNTFILE
+  fi
+
+ 	count='cat $COUNTFILE'
+  dayname=$count
+
+  if [$(cat $COUNTFILE) > $MAXNUM]
+	then 
+		echo 0 > $COUNTFILE	
+
+	else 
+    COUNTER=$[$(cat $COUNTFILE) + 1]
+    echo $COUNTER > $COUNTFILE
+	fi
+  
+	cp /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
 	# Push to SOS
 	scp /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png sos@sos-primary.avl.indiana.edu:/shared/sos/media/site-custom/IU_ware/images
  
-	if [$count > $max]
-	then 
-		echo 0 >counter.tmp	
-	else 
-		((count++))
-	fi
