@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /Users/digitalsign/Desktop/sos_iuware/
 
 # If exists, moves cday image to pday image.
   cdayImage="/Applications/Processing.app/Contents/Java/data/cday.png" 
@@ -13,7 +14,7 @@
 
 # Appends data to csv file and saves it into correct directory 
 # When running processing-java on command line, it searches for data in the Java directory for some reason. (rename to cDay_IUware_data.csv)
-	python analytics_query.py >> /Applications/Processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv
+	python /Users/digitalsign/Desktop/sos_iuware/analytics_query.py >> /Applications/Processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv
 
 # Run processing script for current day
 	processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/ --output=./test2 --run --force
@@ -34,7 +35,7 @@
 #
 #  # Rename current day data to previous day data (pday_IUware_data.csv)
 #    #cp /Applications/processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv /Applications/Processing.app/Contents/Java/data/shapes/pDay_IUware_data.csv
-#    #rm /Applications/Processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv
+    rm /Applications/Processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv
 #
 #######
 
