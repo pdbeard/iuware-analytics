@@ -23,5 +23,4 @@ void draw()
   
   saveFrame("merge.png"); 
   exit();
-  
 }

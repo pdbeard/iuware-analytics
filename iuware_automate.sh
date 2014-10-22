@@ -6,7 +6,7 @@ cd /Users/digitalsign/Desktop/sos_iuware/
   if [ -f $cdayImage ];
   then
     cp /Applications/Processing.app/Contents/Java/data/cday.png /Applications/Processing.app/Contents/Java/data/pday.png
-    rm /Applications/Processing.app/Contents/Java/data/cday.png
+    #rm /Applications/Processing.app/Contents/Java/data/cday.png
   fi
 
 # Creates csv file with correct headers
@@ -24,7 +24,7 @@ cd /Users/digitalsign/Desktop/sos_iuware/
 
 # Moves cday.png into global data directory 
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png /Applications/Processing.app/Contents/Java/data/cday.png
-    rm /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png
+    #rm /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png
 
 # Run script that merges current day, previous day, and bg map
 	processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/processing_merge/ --output=./test2 --run --force
@@ -35,7 +35,7 @@ cd /Users/digitalsign/Desktop/sos_iuware/
 #
 #  # Rename current day data to previous day data (pday_IUware_data.csv)
 #    #cp /Applications/processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv /Applications/Processing.app/Contents/Java/data/shapes/pDay_IUware_data.csv
-    rm /Applications/Processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv
+     #rm /Applications/Processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv
 #
 #######
 

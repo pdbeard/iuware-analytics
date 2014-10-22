@@ -46,7 +46,7 @@ def get_profile_id(service):
 
   if accounts.get('items'):
     # Get the first Google Analytics account
-    firstAccountId = accounts.get('items')[1].get('id')
+    firstAccountId = accounts.get('items')[3].get('id')
 
     # Get a list of all the Web Properties for the first account
     webproperties = service.management().webproperties().list(accountId=firstAccountId).execute()
@@ -71,6 +71,7 @@ def get_results(service, profile_id):
   # Use the Analytics Service Object to query the Core Reporting API
   date = datetime.datetime.now()
   usedate = date.strftime('%Y-%m-%d')
+  
    
   return service.data().ga().get(
       ids='ga:'+ profile_id,

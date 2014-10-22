@@ -27,6 +27,7 @@ void setup() {
   shape_img = loadImage("shape.png");
   bg = loadImage("transparent_2048x1024.png");
   
+  
   // Load the Polygons class from a shapefile
   // in a shapes subdirectory of the data folder.
     //world  = new Polygons(envelope, dataPath("shapes/world2.shp"));
@@ -52,7 +53,7 @@ void setup() {
 }
 
 void draw() {
-    //background(300,25,25);
+  //background(300,25,25);
   background(bg);
   fill(255);
   pushMatrix();
@@ -126,9 +127,9 @@ void draw() {
   
   //Scale
   float max_sess = 0; 
-  float min_sess = 0;
-  float max_scale = 200;
-  float min_scale = 20;
+  float min_sess = 1;
+  float max_scale = 150;
+  float min_scale = 10;
   
   for (TableRow row : csv_table.rows())
   {
@@ -138,6 +139,8 @@ void draw() {
       max_sess = sess;
     }
   }
+  
+  max_sess = sqrt(max_sess);
 
   for (TableRow row : csv_table.rows()) 
   {
@@ -145,12 +148,12 @@ void draw() {
     float lat = row.getFloat("lat");
     float sess = row.getInt("sess");
     
-    float norm = (((max_scale - min_scale)/(max_sess - min_sess))*(sess - max_sess)) + max_scale;
-    println("SESS MINUS " + ((sess-max_sess)*.005));
+    
+    float norm = (((max_scale - min_scale)/(max_sess - min_sess))*(sqrt(sess) - max_sess)) + max_scale;
+    println("SESS MINUS " + ((sqrt(sess)-max_sess)*.005));
    
     circle_Tissot = createQuad(lon,lat,norm,norm,pg); 
     shape(circle_Tissot);
-    
     //String name = row.getString("name"); 
     println(" lon="+lon+" : lat="+lat+" : sess="+sess+" : norm="+norm);
     println(" max="+max_scale + " min="+min_scale +" maxsess"+ max_sess +" minsess="+ min_sess);
