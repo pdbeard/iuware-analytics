@@ -6,7 +6,7 @@ cd /Users/digitalsign/Desktop/sos_iuware/
   if [ -f $cdayImage ];
   then
     cp /Applications/Processing.app/Contents/Java/data/cday.png /Applications/Processing.app/Contents/Java/data/pday.png
-    #rm /Applications/Processing.app/Contents/Java/data/cday.png
+    rm /Applications/Processing.app/Contents/Java/data/cday.png
   fi
 
 # Creates csv file with correct headers
@@ -31,11 +31,11 @@ cd /Users/digitalsign/Desktop/sos_iuware/
 
 ######
 #  # Move or delete previous day into backup folder named yesterdays date 
-#    #rm /Applications/Processing.app/Contents/Java/data/shapes/pDay_IUware_data.csv
+#    rm /Applications/Processing.app/Contents/Java/data/shapes/pDay_IUware_data.csv
 #
 #  # Rename current day data to previous day data (pday_IUware_data.csv)
 #    #cp /Applications/processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv /Applications/Processing.app/Contents/Java/data/shapes/pDay_IUware_data.csv
-     #rm /Applications/Processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv
+     rm /Applications/Processing.app/Contents/Java/data/shapes/cDay_IUware_data.csv
 #
 #######
 

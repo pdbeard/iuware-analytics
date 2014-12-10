@@ -75,6 +75,8 @@ def get_results(service, profile_id):
    
   return service.data().ga().get(
       ids='ga:'+ profile_id,
+      #start_date='2014-10-15',
+      #end_date='2014-10-15', 
       start_date=usedate,
       end_date=usedate,
       metrics='ga:sessions',

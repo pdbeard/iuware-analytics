@@ -82,18 +82,26 @@ void draw() {
   pg.background(0,0,255,0);
   pg.rotateZ(-18*PI/180);
   
+  //pg.tint(255,180);
+  pg.fill(55,230,126,230);
+  pg.stroke(255,255,255,255);
+  pg.strokeWeight(pg.width/35);
+  pg.smooth(8);
+  pg.ellipse(pg.width/2, pg.height/2, pg.width/2, pg.height/2);
+  
+  
   // Star Properties
   //fill(0,255,0,180);  
   //stroke(#000000);
   //strokeWeight(20);
   //PShape stars = star(320,640, 100,260, 5);   // star ( x, y, inner radius , outer radius , points) 
 
-  int oHeight = shape_img.height;
-  int oWidth  = shape_img.width;
-  shape_img.resize(pg.width, pg.height);
+  //int oHeight = shape_img.height;
+  //int oWidth  = shape_img.width;
+  //shape_img.resize(pg.width, pg.height);
   
   //tint(255,127);
-  pg.image(shape_img, -(oWidth/2), oHeight/2);   //uncomment to show image
+  //pg.image(shape_img, -(oWidth/2), oHeight/2);   //uncomment to show image
   //pg.shape(stars);   //uncomment to show star
   //pg.ellipse(0, 0, 200,200);
   pg.endDraw();
@@ -128,8 +136,8 @@ void draw() {
   //Scale
   float max_sess = 0; 
   float min_sess = 1;
-  float max_scale = 150;
-  float min_scale = 10;
+  float max_scale = 160;
+  float min_scale = 13;
   
   for (TableRow row : csv_table.rows())
   {
