@@ -1,14 +1,22 @@
+PImage graph;
 PImage cday;
 PImage pday; 
 PImage bg;
+
+String[] num_s;
+int[] num_i;
 
 void setup()
 {
   size(2048,1024);
   
-  cday = loadImage("cday.png");
-  pday = loadImage("pday.png");
-  bg = loadImage("flatshading_basemap.jpg");
+  //num_s = loadStrings("counter.tmp");    //Load in start day number
+  //num_i = int(num_s); 
+  
+  //graph = loadImage(num_i[0]+".png");
+  cday  = loadImage("cday.png");
+  pday  = loadImage("pday.png");
+  bg    = loadImage("flatshading_basemap.jpg");
 }
 
 void draw()
@@ -20,6 +28,8 @@ void draw()
   
   tint(255,255);
   image(cday,0,0);
+  
+  //image(graph,xcord,ycord,width,height);
   
   saveFrame("merge.png"); 
   exit();
