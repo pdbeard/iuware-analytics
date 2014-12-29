@@ -19,12 +19,12 @@ int m = month();
 int y = year();
 
 // Set Data
-float max_sess  = 5000;    // Find Max Session for all data
+float max_sess  = 1000;    // Find Max Session for all data
 float max_scale = 200;     // Y Scale
 float min_sess  = 0;       // not used
 float min_scale = 0;       // not used
-int step_dist   = 35;      // space between x'axis
-int total_days  = 11;      // Total Days being used
+int step_dist   = 11;      // space between x'axis
+int total_days  = 30;      // Total Days being used
 
   
 void setup() {
@@ -49,7 +49,7 @@ void draw() {
   strokeJoin(ROUND);
   noFill();
 
-  num_s = loadStrings("num.txt");    //Load in start day number
+  num_s = loadStrings("counter.tmp");    //Load in start day number
   num_i = int(num_s); 
   
   // Graph Line Draw

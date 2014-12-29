@@ -25,8 +25,8 @@ void setup() {
   pg = createGraphics(1024,1024, P3D);           //initialize offscreen buffer
   hint(DISABLE_DEPTH_TEST);                      //avoids z-fighting
   shape_img = loadImage("shape.png");
-  //bg = loadImage("transparent_2048x1024.png");
-  bg = loadImage("analytics_basemap.jpg");
+  bg = loadImage("transparent_2048x1024.png");
+  //bg = loadImage("analytics_basemap.jpg");
   
   // Load the Polygons class from a shapefile
   // in a shapes subdirectory of the data folder.
