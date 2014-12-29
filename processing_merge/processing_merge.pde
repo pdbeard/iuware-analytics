@@ -14,6 +14,7 @@ void setup()
   //num_i = int(num_s); 
   
   //graph = loadImage(num_i[0]+".png");
+  //graph = loadImage("10.png");
   cday  = loadImage("cday.png");
   pday  = loadImage("pday.png");
   bg    = loadImage("flatshading_basemap.jpg");
@@ -29,7 +30,8 @@ void draw()
   tint(255,255);
   image(cday,0,0);
   
-  //image(graph,xcord,ycord,width,height);
+  //image(graph,width/25,height/2.5,300,200);
+  //image(graph,width/1.6,height/2.5,300,200);
   
   saveFrame("merge.png"); 
   exit();

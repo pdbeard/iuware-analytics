@@ -14,6 +14,10 @@ int[] data_i;
 int[] num_i;
 int index; 
 
+int d = day();
+int m = month();
+int y = year();
+
 // Set Data
 float max_sess  = 5000;    // Find Max Session for all data
 float max_scale = 200;     // Y Scale
@@ -36,7 +40,7 @@ void draw() {
   
   rectMode(CENTER);
   stroke(255);
-  fill(105,105,105);
+  fill(50);
   rect(width/2,height/2,width-20,height-20);
   
   // Graph line Style
@@ -45,7 +49,7 @@ void draw() {
   strokeJoin(ROUND);
   noFill();
 
-  num_s = loadStrings("counter.tmp");    //Load in start day number
+  num_s = loadStrings("num.txt");    //Load in start day number
   num_i = int(num_s); 
   
   // Graph Line Draw
@@ -102,7 +106,7 @@ void draw() {
   textSize(20);
   
   textAlign(CENTER,CENTER);
-  text("Current Day",x_width,y_height+25);
+  text(m+"/"+d+"/"+y,x_width,y_height+25);
   
   textAlign(LEFT,CENTER);
   text(daytotals, x_width+35, firststep+y_height-2);  // Day Total
