@@ -80,7 +80,7 @@ def get_results(service, profile_id):
       start_date=usedate,
       end_date=usedate,
       metrics='ga:sessions',
-	  dimensions='ga:longitude,ga:latitude',
+	  dimensions='',
 	  max_results='10000',
 	  sort='-ga:sessions').execute()
 
