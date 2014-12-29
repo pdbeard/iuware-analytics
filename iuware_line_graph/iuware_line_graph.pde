@@ -112,7 +112,7 @@ void draw() {
   text("Total Daily Sessions", width/2.1,50);
   
   // Saves and exits
-  saveFrame("output/"+num_i[0]+".png");
+  saveFrame(num_i[0]+".png");
   exit();
   
 }

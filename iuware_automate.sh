@@ -59,7 +59,10 @@ cd /Users/digitalsign/Desktop/sos_iuware/
     	((COUNTER++))
     	echo $COUNTER > $COUNTFILE
 	fi
-  
+  	cp /Users/digitalsign/Desktop/sos_iuware/counter.tmp /Applications/Processing.app/Contents/Java/data/counter.tmp
+	python /Users/digitalsign/Desktop/sos_iuware/analytics_query_totals.py >> /Applications/Processing.app/Contents/Java/data/shapes/${count}.csv
+	processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/iuware_line_graph/ --output=./test2 --run --force
+	
  
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
 	# Push to SOS
