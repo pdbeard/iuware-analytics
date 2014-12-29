@@ -45,7 +45,7 @@ void draw() {
   strokeJoin(ROUND);
   noFill();
 
-  num_s = loadStrings("num.txt");    //Load in start day number
+  num_s = loadStrings("counter.tmp");    //Load in start day number
   num_i = int(num_s); 
   
   // Graph Line Draw
@@ -112,7 +112,7 @@ void draw() {
   text("Total Daily Sessions", width/2.1,50);
   
   // Saves and exits
-  saveFrame("output/"+num_i[0]+"test.png");
+  saveFrame("output/"+num_i[0]+".png");
   exit();
   
 }
