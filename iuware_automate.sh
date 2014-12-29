@@ -64,4 +64,8 @@ cd /Users/digitalsign/Desktop/sos_iuware/
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
 	# Push to SOS
 	scp /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png sos@sos-primary.avl.indiana.edu:/shared/sos/media/site-custom/IU_ware/images
+	sleep 5s
+	
+	rm /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png
+	rm /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
  
