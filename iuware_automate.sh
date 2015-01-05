@@ -26,8 +26,6 @@ cd /Users/digitalsign/Desktop/sos_iuware/
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png /Applications/Processing.app/Contents/Java/data/cday.png
     #rm /Users/digitalsign/Desktop/sos_iuware/processing_iuware_latlon/cday.png
 
-# Run script that merges current day, previous day, and bg map
-	processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/processing_merge/ --output=./test2 --run --force
 
 ######
 #  # Move or delete previous day into backup folder named yesterdays date 
@@ -43,7 +41,7 @@ cd /Users/digitalsign/Desktop/sos_iuware/
   	
 # Counter for Image Sequence File names
   COUNTFILE="./counter.tmp"
-  MAXNUM=30
+  MAXNUM=29
 
   if [ ! -f $COUNTFILE ]
   then
@@ -67,6 +65,10 @@ cd /Users/digitalsign/Desktop/sos_iuware/
 	python /Users/digitalsign/Desktop/sos_iuware/analytics_query_totals.py > /Applications/Processing.app/Contents/Java/data/${count}.csv
 	processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/iuware_line_graph/ --output=./test2 --run --force
 	
+	cp /Users/digitalsign/Desktop/sos_iuware/iuware_line_graph/${count}.png /Applications/Processing.app/Contents/Java/data/${count}.png
+	# Run script that merges current day, previous day, and bg map
+	processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/processing_merge/ --output=./test2 --run --force
+
  
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
 	# Push to SOS

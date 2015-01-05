@@ -55,25 +55,28 @@ void draw() {
   int i;
   for ( i = num_i[0]+total_days; i>num_i[0]; i--)
   {
+    index = i%total_days;
     data_s = loadStrings(index+".csv");
     data_i = int(data_s);
-    
+    print("data!!= " +data_i[0]);
     if (data_i[0]>max_sess)
     {
       max_sess = data_i[0];
+      print("max =" +max_sess);
     }
   }
   
   // Graph Line Draw
   beginShape();  
   int x = 0;
+
   for (i = num_i[0]+total_days; i>num_i[0]; i--)
   {
     index = i%total_days;
     data_s = loadStrings(index+".csv");
     data_i = int(data_s);
     
-    //average = average + data_i[0];  //uncomment for Average line
+    average = average + data_i[0];  //uncomment for Average line
     
     total_norm = (((max_scale - min_scale)/(max_sess - min_sess))*(data_i[0]- max_sess)) + max_scale;
     total_norm = height-total_norm-height;
@@ -91,13 +94,15 @@ void draw() {
   } 
   endShape();
   
-/***** 
+
 // Average Line
   average = average/total_days;
   total_norm = (((max_scale - min_scale)/(max_sess - min_sess))*(average- max_sess)) + max_scale;
-  average = height-total_norm-y_height;
-  line (x_width, average  , x_width+x+step_dist, average);
-*****/
+  total_norm = height-total_norm-height;
+  stroke(255,50);
+  strokeWeight(1);
+  line (x_width, total_norm+y_height, x_width+x+step_dist, total_norm+y_height);
+  //line (x_width+x+step_dist-15, total_norm+y_height, x_width+x+step_dist-15, y_height+15 );
  
   // X - axis line
   stroke(255,100);
@@ -114,6 +119,7 @@ void draw() {
 
   // Text 
   String daytotals = NumberFormat.getInstance().format(daytotal);  // Removes float .00's. Uses java.text import
+  String averages = NumberFormat.getInstance().format(average);
   textSize(20);
   
   textAlign(CENTER,CENTER);
@@ -121,6 +127,11 @@ void draw() {
   
   textAlign(LEFT,CENTER);
   text(daytotals, x_width+35, firststep+y_height-2);  // Day Total
+  
+  textAlign(RIGHT,CENTER);
+  text("30 Day", x_width-(step_dist*total_days)-5,total_norm+y_height-15);
+  text("Average", x_width-(step_dist*total_days),total_norm+y_height+5);
+  //text(averages, x_width-(step_dist*total_days),total_norm+y_height);
   
   textSize(30);
   textAlign(CENTER,CENTER);
