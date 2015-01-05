@@ -19,7 +19,7 @@ int m = month();
 int y = year();
 
 // Set Data
-float max_sess  = 3000;    // Find Max Session for all data
+float max_sess  = 0;       // Find Max Session for all data (done automagically) 
 float max_scale = 200;     // Y Scale
 float min_sess  = 0;       // not used
 float min_scale = 0;       // not used
@@ -52,9 +52,20 @@ void draw() {
   num_s = loadStrings("counter.tmp");    //Load in start day number
   num_i = int(num_s); 
   
+  int i;
+  for ( i = num_i[0]+total_days; i>num_i[0]; i--)
+  {
+    data_s = loadStrings(index+".csv");
+    data_i = int(data_s);
+    
+    if (data_i[0]>max_sess)
+    {
+      max_sess = data_i[0];
+    }
+  }
+  
   // Graph Line Draw
   beginShape();  
-  int i;
   int x = 0;
   for (i = num_i[0]+total_days; i>num_i[0]; i--)
   {
