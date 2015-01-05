@@ -19,7 +19,7 @@ int m = month();
 int y = year();
 
 // Set Data
-float max_sess  = 1000;    // Find Max Session for all data
+float max_sess  = 3000;    // Find Max Session for all data
 float max_scale = 200;     // Y Scale
 float min_sess  = 0;       // not used
 float min_scale = 0;       // not used
