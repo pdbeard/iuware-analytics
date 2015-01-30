@@ -41,7 +41,7 @@ cd /Users/digitalsign/Desktop/sos_iuware/
   	
 # Counter for Image Sequence File names
   COUNTFILE="./counter.tmp"
-  MAXNUM=29
+  MAXNUM=28
 
   if [ ! -f $COUNTFILE ]
   then

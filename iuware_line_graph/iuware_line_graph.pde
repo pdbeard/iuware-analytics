@@ -95,11 +95,11 @@ void draw() {
   endShape();
   
 
-// Average Line
+  // Average Line
   average = average/total_days;
   total_norm = (((max_scale - min_scale)/(max_sess - min_sess))*(average- max_sess)) + max_scale;
   total_norm = height-total_norm-height;
-  stroke(255,50);
+  stroke(255,180);
   strokeWeight(1);
   line (x_width, total_norm+y_height, x_width+x+step_dist, total_norm+y_height);
   //line (x_width+x+step_dist-15, total_norm+y_height, x_width+x+step_dist-15, y_height+15 );
@@ -110,7 +110,8 @@ void draw() {
   line(x_width,y_height,x_width+x+step_dist,y_height);  
   
   // Current Day style. Line & Ellipse
-  stroke(55,180,126);
+  stroke(106,230,150);
+  strokeWeight(5);
   line(x_width,y_height+15, x_width, firststep+y_height+7.5);
   line(x_width+30,firststep+y_height, x_width+7.5, firststep+y_height);
  

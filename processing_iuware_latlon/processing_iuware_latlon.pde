@@ -134,11 +134,12 @@ void draw() {
   println(csv_table.getRowCount() + " total rows in table"); 
   
   //Scale
-  float max_sess = 0; 
+  float max_sess = 5000; 
   float min_sess = 1;
   float max_scale = 160;
   float min_scale = 13;
   
+  /*
   for (TableRow row : csv_table.rows())
   {
     float sess = row.getInt("sess");
@@ -147,6 +148,7 @@ void draw() {
       max_sess = sess;
     }
   }
+  */
   
   max_sess = sqrt(max_sess);
 
