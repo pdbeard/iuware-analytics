@@ -41,23 +41,23 @@ cd /Users/digitalsign/Desktop/sos_iuware/
   	
 # Counter for Image Sequence File names
   COUNTFILE="./counter.tmp"
-  MAXNUM=28
+  MAXNUM=30
 
   if [ ! -f $COUNTFILE ]
   then
-   	 echo 0 > $COUNTFILE
+   	 echo 00 > $COUNTFILE
   fi
 
   count=$(cat $COUNTFILE)
   if [ $(cat $COUNTFILE) -gt $MAXNUM ]
 	then 
-		echo 0 > $COUNTFILE	
+		echo 00 > $COUNTFILE	
 
 	else 
 		
     	COUNTER=$count
     	((COUNTER++))
-    	echo $COUNTER > $COUNTFILE
+    	printf "%0*d\n" ${#MAXNUM} $COUNTER > $COUNTFILE   #leading zeros
 	fi
   	
 
