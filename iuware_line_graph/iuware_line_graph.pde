@@ -56,7 +56,7 @@ void draw() {
   for ( i = num_i[0]+total_days; i>num_i[0]; i--)
   {
     index = i%total_days;
-    data_s = loadStrings(index+".csv");
+    data_s = loadStrings(nf(index,2)+".csv");
     data_i = int(data_s);
     print("data!!= " +data_i[0]);
     if (data_i[0]>max_sess)
@@ -73,7 +73,7 @@ void draw() {
   for (i = num_i[0]+total_days; i>num_i[0]; i--)
   {
     index = i%total_days;
-    data_s = loadStrings(index+".csv");
+    data_s = loadStrings(nf(index,2)+".csv");
     data_i = int(data_s);
     
     average = average + data_i[0];  //uncomment for Average line
@@ -139,7 +139,8 @@ void draw() {
   text("Total Daily Sessions", width/2.1,50);
   
   // Saves and exits
-  saveFrame(num_i[0]+".png");
+  saveFrame(nf(num_i[0],2)+".png");
+  //print(nf(num_i[0],2));
   exit();
   
 }
