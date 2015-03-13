@@ -56,26 +56,26 @@ cd /Users/digitalsign/Desktop/sos_iuware/
 	else 
 		
     	COUNTER=$count
-    	((COUNTER++))
-    	printf "%0*d\n" ${#MAXNUM} $COUNTER > $COUNTFILE   #leading zeros
+    	COUNTER=$(expr "$COUNTER" + 1)                       #fixing problem with leading zeros causing octal intepretation 
+    	printf "%0*d\n" ${#MAXNUM} $COUNTER > $COUNTFILE     #leading zeros -- Appending into countfile
 	fi
   	
 
-	
+	# Run script that creates the Line Graph
 	python /Users/digitalsign/Desktop/sos_iuware/analytics_query_totals.py > /Applications/Processing.app/Contents/Java/data/${count}.csv
 	processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/iuware_line_graph/ --output=./test2 --run --force
-	
 	cp /Users/digitalsign/Desktop/sos_iuware/iuware_line_graph/${count}.png /Applications/Processing.app/Contents/Java/data/${count}.png
+	
 	# Run script that merges current day, previous day, and bg map
 	processing-java --sketch=/Users/digitalsign/Desktop/sos_iuware/processing_merge/ --output=./test2 --run --force
-
- 
 	cp /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
+	
 	# Push to SOS
 	scp /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png sos@sos-primary.avl.indiana.edu:/shared/sos/media/site-custom/IU_ware/images
 	scp /Users/digitalsign/Desktop/sos_iuware/iuware_line_graph/${count}.png sos@sos-primary.avl.indiana.edu:/shared/sos/media/site-custom/IU_ware/pips/
 	sleep 5s
 	
+	# Clear old images
 	rm /Users/digitalsign/Desktop/sos_iuware/processing_merge/merge.png
 	rm /Users/digitalsign/Desktop/sos_iuware/processing_merge/${count}.png
 	rm /Users/digitalsign/Desktop/sos_iuware/iuware_line_graph/${count}.png

@@ -1,3 +1,6 @@
+//pdbeard@iu.edu
+//Merges previously created images
+
 PImage graph;
 PImage cday;
 PImage pday; 
@@ -13,7 +16,7 @@ void setup()
   num_s = loadStrings("counter.tmp");    //Load in start day number
   num_i = int(num_s); 
   
-  graph = loadImage(num_i[0]+".png");
+  graph = loadImage(nf(num_i[0],2)+".png");
   //graph = loadImage("10.png");
   cday  = loadImage("cday.png");
   pday  = loadImage("pday.png");

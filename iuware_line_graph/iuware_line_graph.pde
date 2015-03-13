@@ -1,6 +1,6 @@
 //------ Line Graph for IUware
-// TODO
-// Make stuff green 
+// pdbeard@iu.edu
+// 
 
 import java.text.*;
 
